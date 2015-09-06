@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h3>{{question.question}}</h3>
+    
+    <form method="POST" action="/pytanie">
+        
+        {% for val, answer in question.answers.iteritems()|sort %}
+        
+            <label for={{val}}>{{val}} {{answer}}</label>
+            <input type="radio" name="user_answer" value="{{val}}" />   
+            <br>
+            
+        {% endfor %}
+        
+        <input type="hidden" name="q_index" value="{{q_index}}" />
+        
+        <input type="submit" value="Start" />
+    </form>
+{% endblock content %}
